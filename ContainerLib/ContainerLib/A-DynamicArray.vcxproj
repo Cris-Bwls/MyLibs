@@ -143,6 +143,7 @@
     <ClInclude Include="Deque.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="EnumPrimitiveTypes.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>

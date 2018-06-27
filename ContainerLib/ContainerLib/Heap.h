@@ -112,7 +112,7 @@ public:
 	//--------------------------------------------------
 	int Size()
 	{
-		return m_Array.m_nUsed;
+		return m_Array.Size();
 	}
 
 	//--------------------------------------------------
@@ -123,8 +123,8 @@ public:
 	//--------------------------------------------------
 	T& operator[] (int index)
 	{
-		//WRONG
-		return m_Array.m_pData[index];
+		HeapNode<T>* result = m_Array[index];
+		return result->m_data;
 	}
 
 	// Step
@@ -133,7 +133,7 @@ public:
 	// Clear
 	void Clear()
 	{
-		while (m_Array.Size > 0)
+		while (m_Array.Size() > 0)
 		{
 			delete m_Array.PopBack();
 		}
@@ -174,7 +174,7 @@ private:
 
 	void DownHeap(int index)
 	{
-		HeapNode<T>* dataNode = m_Array.m_pData[index];
+		HeapNode<T>* dataNode = m_Array[index];
 		HeapNode<T>* ChildNode1 = dataNode->m_pChild1;
 		HeapNode<T>* ChildNode2 = dataNode->m_pChild2;
 
@@ -231,7 +231,7 @@ private:
 
 	void UpHeap(int index)
 	{
-		HeapNode<T>* dataNode = m_Array.m_pData[index];
+		HeapNode<T>* dataNode = m_Array[index];
 		HeapNode<T>* parentNode = dataNode->m_pParent;
 
 		while (CompareFunc(dataNode, parentNode))
